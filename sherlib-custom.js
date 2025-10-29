@@ -44,3 +44,31 @@ $(document).ready(function () {
         profileEmail.parent().append(bookingLink);
     }
 });
+
+// Add a custom class to gallery box
+$(document).ready(function () {
+    // $('.slick-slider').parent().addClass('sherlib-gallery-box');
+    $('.slick-slider').on('init', function () {
+        console.log('slider added');
+        $(this).parent().addClass('sherlib-gallery-box');
+    });
+
+    $(document).on('event', '.slick-slider', function () {
+        console.log('slider added2');
+        $(this).parent().addClass('sherlib-gallery-box');
+    });
+
+    var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            if (mutation.type === 'childList') {
+                $('.slick-slider').each(function () {
+                    console.log('slider added3');
+                    $(this).parent().addClass('sherlib-gallery-box');
+                });
+            }
+        });
+    });
+
+    var config = { childList: true, subtree: true };
+    observer.observe(document.body, config);
+});
