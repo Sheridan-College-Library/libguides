@@ -1,0 +1,173 @@
+<!-- Bootstrap 5 (only if not already loaded by A-Z) -->
+<!-- REMOVE if A-Z already includes it -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Sheridan custom styles (keep yours) -->
+<link rel="stylesheet" href="//libapps-ca.s3.amazonaws.com/sites/209/include/sherlib-custom.css">
+
+<style>
+    /* Fix header layout */
+    .navbar {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Top link row */
+    .navbar-sheridan-links {
+        display: flex;
+        gap: 20px;
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+
+    .navbar-sheridan-links a {
+        text-decoration: none;
+        color: #777;
+    }
+
+    /* Logo alignment */
+    .navbar-brand img {
+        height: 40px;
+    }
+
+    /* Right-side nav */
+    .header-details {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    /* main nav links */
+    .header-details a {
+        display: flex;
+        flex-direction: column;
+        /* 👈 stack vertically */
+        align-items: center;
+        /* center horizontally */
+        justify-content: center;
+        gap: 4px;
+
+        white-space: nowrap;
+        color: #003767;
+        text-decoration: none;
+        font-size: 0.85rem;
+    }
+
+    /* Icons */
+    .header-details i {
+        font-size: 1.0rem;
+    }
+
+    @media (max-width: 992px) {
+
+        /* Let Bootstrap handle collapse layout */
+        .navbar .w-100.d-flex.align-items-center {
+            flex-wrap: wrap;
+        }
+
+        /* Move toggle to right properly */
+        .navbar-toggler {
+            margin-left: auto;
+        }
+
+        /* Expanded menu container */
+        .navbar-collapse {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Fix nav items layout */
+        .header-details {
+            flex-direction: column;
+            /* vertical list */
+            align-items: flex-start;
+            /* left align */
+            gap: 10px;
+            width: 100%;
+        }
+
+        /* Each link becomes full-width row */
+        .header-details a {
+            flex-direction: row;
+            /* icon LEFT again on mobile */
+            justify-content: flex-start;
+            gap: 10px;
+            width: 100%;
+            padding: 6px 0;
+        }
+
+        /* Slightly smaller icons */
+        .header-details i {
+            font-size: 16px;
+        }
+
+        /* Hide top utility row spacing issues */
+        .navbar-sheridan-links {
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    }
+
+    /* Prevent overlap with page content */
+    body {
+        padding-top: 90px;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container d-flex flex-column">
+
+        <!-- ROW 1: utility links -->
+        <div class="w-100 d-flex justify-content-end navbar-sheridan-links">
+            <a href="https://www.sheridancollege.ca/" target="_blank">Sheridan website</a>
+            <a href="https://office.sheridancollege.ca/" target="_blank">Office 365</a>
+            <a href="https://slate.sheridancollege.ca/" target="_blank">SLATE</a>
+            <a href="https://central.sheridancollege.ca/" target="_blank">Central</a>
+        </div>
+
+        <!-- ROW 2: logo + main nav -->
+        <div class="w-100 d-flex align-items-center">
+
+            <a class="navbar-brand" href="http://library.sheridancollege.ca/" target="_blank">
+                <img src="https://libapps.s3.amazonaws.com/accounts/659/images/Sheridan_Library_and_Learning_-_COLOUR-300.png"
+                    alt="Sheridan Library logo">
+            </a>
+
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                <div class="header-details">
+
+                    <a href="https://sheridancollege.libguides.com/hours" target="_blank">
+                        <i class="fa fa-clock-o"></i><span>Hours</span>
+                    </a>
+
+                    <a href="https://sheridan.tutorocean.com/home" target="_blank">
+                        <i class="fa fa-users"></i><span>Book a Tutor</span>
+                    </a>
+
+                    <a href="https://sheridancollege.libguides.com/borrowing" target="_blank">
+                        <i class="fa fa-book"></i><span>Borrowing</span>
+                    </a>
+
+                    <a href="http://sheridancollege.libguides.com/citation_guide" target="_blank">
+                        <i class="fa fa-quote-right"></i><span>Citations</span>
+                    </a>
+
+                    <a href="https://sheridancollege.libguides.com/chat" target="_blank">
+                        <i class="fa fa-comments"></i><span>Chat</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>

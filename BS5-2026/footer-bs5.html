@@ -1,0 +1,112 @@
+<style>
+    /* Footer wrapper */
+    .footer-wrapper {
+        background-color: #173e6b;
+        /* Sheridan blue */
+        padding: 40px 0;
+        color: #fff;
+    }
+
+    /* Layout */
+    .footer-wrapper .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    /* Logo */
+    .footer-logo img {
+        height: 50px;
+    }
+
+    /* Social section */
+    .footer-social-icons {
+        text-align: right;
+    }
+
+    .footer-social-icons h2 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        color: #ffffff;
+    }
+
+    /* Social list */
+    .footer-social {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 12px;
+    }
+
+    /* Social icons (circles) */
+    .footer-social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: #00b2ce;
+        color: #fff;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+    .footer-social a:hover {
+        background-color: #0095ad;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+        .footer-wrapper .container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .footer-social-icons {
+            text-align: left;
+        }
+    }
+</style>
+
+<div class="wrapper footer-wrapper">
+    <div class="container">
+
+        <!-- Logo -->
+        <div class="footer-logo">
+            <img src="https://www.sheridancollege.ca/-/media/project/sheridan/shared/images/logos/sheridan-logo-footer.svg"
+                alt="Sheridan College logo">
+        </div>
+
+        <!-- Social -->
+        <div class="footer-social-icons">
+            <h2>Connect with us</h2>
+            <ul class="footer-social">
+                <li>
+                    <a target="_blank" href="http://www.facebook.com/sheridanlibrary">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.twitter.com/sheridanlibrary">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.instagram.com/sheridanlibrary">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.youtube.com/sheridanlibraries">
+                        <i class="fa fa-youtube"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
