@@ -511,12 +511,19 @@ nav#s-lib-bc a {
     margin: 0;
 }
 
+
+.s-lib-profile-email a {
+    font-size: 1.4rem !important;
+    color: #ffffff !important;
+
+}
+
 .full-profile-box .s-lib-profile-email a {
     font-size: 1.6rem !important;
-    color: #ffffff !important;
     font-weight: 300;
     padding: 0.6rem;
 }
+
 
 .label-info {
     background-color: #013767;

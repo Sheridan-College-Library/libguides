@@ -1,22 +1,20 @@
 $(document).ready(function () {
-    $('.s-lib-profile-image')
-        .closest('.s-lib-box-container')
-        .addClass('full-profile-box');
-    $('ul.nav').removeClass('nav-pills');
+  $(".s-lib-profile-image").closest(".s-lib-box-container").addClass("full-profile-box");
+  $("ul.nav").removeClass("nav-pills");
 });
 
 $(window).scroll(function () {
-    var scroll = $(window).scrollTop();
+  var scroll = $(window).scrollTop();
 
-    if (scroll >= 100) {
-        $('.navbar-fixed-top').addClass('top-scrolled');
-        $('body').addClass('scrolling');
-        // $(".navbar-fixed-top .nav-icon-text").addClass("sr-only");
-    } else {
-        $('.navbar-fixed-top').removeClass('top-scrolled');
-        $('body').removeClass('scrolling');
-        // $(".navbar-fixed-top .nav-icon-text").removeClass("sr-only");
-    }
+  if (scroll >= 100) {
+    $(".navbar-fixed-top").addClass("top-scrolled");
+    $("body").addClass("scrolling");
+    // $(".navbar-fixed-top .nav-icon-text").addClass("sr-only");
+  } else {
+    $(".navbar-fixed-top").removeClass("top-scrolled");
+    $("body").removeClass("scrolling");
+    // $(".navbar-fixed-top .nav-icon-text").removeClass("sr-only");
+  }
 });
 
 /**
@@ -26,49 +24,43 @@ $(window).scroll(function () {
  */
 
 $(document).ready(function () {
-    var profileEmail = $(
-        '.sherlib-course-guide .full-profile-box .s-lib-profile-email a.label-info'
-    );
-    var profileName = $(
-        '.sherlib-course-guide .full-profile-box .s-lib-profile-name'
-    );
-    var bookingLink = $(
-        '.sherlib-course-guide .full-profile-box .s-lib-profile-widget-other a#book-appointment'
-    );
-    var profileNameText = profileName.text().trim().split(' ');
-    if (profileName.length > 0) {
-        profileEmail.text('Email ' + profileNameText[0]);
-    }
-    if (bookingLink) {
-        bookingLink.addClass('label label-info');
-        profileEmail.parent().append(bookingLink);
-    }
+  var profileEmail = $(".sherlib-course-guide .full-profile-box .s-lib-profile-email a.label-info");
+  var profileName = $(".sherlib-course-guide .full-profile-box .s-lib-profile-name");
+  var bookingLink = $(".sherlib-course-guide .full-profile-box .s-lib-profile-widget-other a#book-appointment");
+  var profileNameText = profileName.text().trim().split(" ");
+  if (profileName.length > 0) {
+    profileEmail.text("Email " + profileNameText[0]);
+  }
+  if (bookingLink) {
+    bookingLink.addClass("label label-info");
+    profileEmail.parent().append(bookingLink);
+  }
 });
 
 // Add a custom class to gallery box
 $(document).ready(function () {
-    // $('.slick-slider').parent().addClass('sherlib-gallery-box');
-    $('.slick-slider').on('init', function () {
-        console.log('slider added');
-        $(this).parent().addClass('sherlib-gallery-box');
-    });
+  // $('.slick-slider').parent().addClass('sherlib-gallery-box');
+  $(".slick-slider").on("init", function () {
+    console.log("slider added");
+    $(this).parent().addClass("sherlib-gallery-box");
+  });
 
-    $(document).on('event', '.slick-slider', function () {
-        console.log('slider added2');
-        $(this).parent().addClass('sherlib-gallery-box');
-    });
+  $(document).on("event", ".slick-slider", function () {
+    console.log("slider added2");
+    $(this).parent().addClass("sherlib-gallery-box");
+  });
 
-    var observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-            if (mutation.type === 'childList') {
-                $('.slick-slider').each(function () {
-                    console.log('slider added3');
-                    $(this).parent().addClass('sherlib-gallery-box');
-                });
-            }
+  var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (mutation.type === "childList") {
+        $(".slick-slider").each(function () {
+          console.log("slider added3");
+          $(this).parent().addClass("sherlib-gallery-box");
         });
+      }
     });
+  });
 
-    var config = { childList: true, subtree: true };
-    observer.observe(document.body, config);
+  var config = { childList: true, subtree: true };
+  observer.observe(document.body, config);
 });
