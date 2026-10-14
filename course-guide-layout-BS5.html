@@ -1,0 +1,199 @@
+<body class="s-lg-guide-body sherlib-course-guide">
+    <!-- SIDE NAV CSS: Moved safely inside the body tag -->
+    <style>
+        /* Guide header title sizing */
+        @media (min-width: 768px) {
+            #s-lg-guide-header-info h1 {
+                font-size: 2.7rem !important;
+            }
+        }
+
+        /* Desktop: always show side-nav when cols are side-by-side (>= 992px) */
+        @media (min-width: 992px) {
+            #s-lg-side-nav-collapse.collapse {
+                display: block !important;
+                height: auto !important;
+                overflow: visible !important;
+                visibility: visible !important;
+            }
+        }
+    </style>
+
+    {{skip_link}}
+    {{obsolete_browser_alert}}
+    {{ADMIN_CMD_BAR}}
+
+    <!-- BEGIN: Page Header -->
+    {{public_header}}
+    <!-- END: Page Header -->
+
+    <!-- BEGIN: Guide Header -->
+    <div class="guide-header-bg"></div>
+    <div id="s-lg-guide-header" class="container s-lib-header s-lib-side-borders">
+        <nav id="s-lib-bc" aria-label="breadcrumb">
+            {{breadcrumbs}}
+        </nav>
+
+        <div class="row justify-content-between align-items-center">
+            <div class="col-12">
+                <div id="s-lg-guide-header-info">
+                    <h1 id="s-lg-guide-name">
+                        {{guide_title}}
+                    </h1>
+                    <div id="s-lg-guide-desc-container">
+                        <span id="s-lg-guide-description">{{guide_description}}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Profile box removed for BS5 version -->
+        </div>
+    </div>
+    <!-- END: Guide Header -->
+
+    <div id="s-lg-guide-tabs-title-bar" class="container s-lib-side-borders"></div>
+
+    <div id="s-lg-side-nav-content" class="container s-lib-side-borders pad-top-med">
+        <div class="row">
+
+            <!-- SIDE NAV COLUMN -->
+            <div class="col-md-3 s-lg-tabs-side pad-bottom-med">
+                <div id="s-lg-tabs-container">
+
+                    <!-- Collapsible content: collapsed by default on mobile/tablet -->
+                    <div id="s-lg-side-nav-collapse" class="collapse">
+                        <div id="s-lg-guide-tabs" role="navigation" aria-label="Guide Pages">
+                            <ul class="nav nav-pills flex-column split-button-nav">
+                                {{guide_nav}}
+                            </ul>
+                            {{side_nav_boxes}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <div class="col-md-9">
+                <div class="s-lg-tab-content">
+                    <h2 class="sherlib-page-title">{{page_title}}</h2>
+                    <div id="s-lg-guide-main" class="tab-pane active" tabindex="-1">
+                        {{content}}
+                    </div>
+                </div>
+                {{page_prev_next_links}}
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BEGIN: Page Footer -->
+    <div id="s-lib-footer-public" class="s-lib-footer footer container s-lib-side-borders">
+        <div id="s-lg-guide-header-meta" class="pad-top-sm pad-left-med clearfix">
+            <ul id="s-lg-guide-header-attributes" class="">
+                <li id="s-lg-guide-header-updated" class="s-lg-h-separator">
+                    {{last_updated_display}}
+                </li>
+                <li id="s-lg-guide-header-url" class="s-lg-h-separator">
+                    {{guide_url_display}}
+                </li>
+                <li id="s-lg-guide-print-url">
+                    {{print_url_display}}
+                </li>
+            </ul>
+            <!-- Bootstrap 5: pull-right -> float-end -->
+            <div id="s-lib-footer-login-link" class="float-end pad-right-med">
+                {{login_url_display}}
+            </div>
+        </div>
+
+        <div class="pad-bottom-sm clearfix">
+            <!-- Bootstrap 5: pull-right -> float-end -->
+            <div id="s-lib-footer-support-link" class="float-end pad-right-med">
+                <a href="mailto:emma.shaw@sheridancollege.ca">Report a problem</a>
+            </div>
+            <!-- Bootstrap 5: pull-left -> float-start -->
+            <div id="s-lg-guide-header-subjects" class="pad-top-sm pad-left-med pad-right-med float-start">
+                {{guide_subjects}}
+            </div>
+            <div id="s-lg-guide-header-tags" class="pad-top-sm pad-left-med">
+                {{guide_tags}}
+            </div>
+        </div>
+    </div>
+    <!-- END: Page Footer -->
+
+    <div id="s-lib-scroll-top">
+        <a href="javascript:void(0);" onclick="jQuery('body').focus();" title="Back to Top" aria-label="Back to Top">
+            <span class="fa-stack fa-lg" aria-hidden="true">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-angle-double-up fa-stack-1x" style="position:relative; bottom:2px;"></i>
+            </span>
+        </a>
+    </div>
+
+    <div id="s-lib-alert" title="">
+        <div id="s-lib-alert-content"></div>
+    </div>
+
+    <!-- BEGIN: Custom Footer -->
+    {{public_footer}}
+    <!-- END: Custom Footer -->
+
+    <!-- Bind the EXISTING top-right hamburger to toggle the guide side-nav on mobile/tablet -->
+    <script>
+        jQuery(function($) {
+            // CHANGED: Trigger on anything smaller than 992px to fix the dead zone!
+            function isMobileWidth() {
+                return window.matchMedia && window.matchMedia("(max-width: 991px)").matches;
+            }
+
+            function findHeaderHamburger() {
+                // Bootstrap 5: navbar-toggle -> navbar-toggler
+                var $btn = $("#s-lib-public-header .navbar-toggler:visible").first();
+
+                if (!$btn.length) {
+                    // Bootstrap 5: navbar-toggle -> navbar-toggler
+                    $btn = $(".navbar-toggler:visible").first();
+                }
+
+                return $btn;
+            }
+
+            function bindHamburger() {
+                if (!isMobileWidth()) return;
+
+                var $hamburger = findHeaderHamburger();
+                if (!$hamburger.length) return;
+
+                if ($hamburger.data("sherlibGuideNavBound")) return;
+                $hamburger.data("sherlibGuideNavBound", true);
+
+                $hamburger.on("click.sherlibGuideNav", function() {
+                    var sideNav = document.getElementById('s-lg-side-nav-collapse');
+                    if (!sideNav) return;
+
+                    // Bootstrap 5 vanilla JS collapse API
+                    if (window.bootstrap && bootstrap.Collapse) {
+                        bootstrap.Collapse.getOrCreateInstance(sideNav).toggle();
+                    } else if (window.jQuery && jQuery.fn.collapse) {
+                        // Fallback for older Bootstrap/jQuery environments
+                        jQuery(sideNav).collapse('toggle');
+                    }
+                });
+
+                var currentLabel = $hamburger.attr("aria-label") || "";
+                if (!currentLabel) {
+                    $hamburger.attr("aria-label", "Toggle menu and guide pages");
+                }
+            }
+
+            bindHamburger();
+
+            $(window).on("resize.sherlibGuideNav orientationchange.sherlibGuideNav", function() {
+                bindHamburger();
+            });
+
+        });
+    </script>
+
+</body>
